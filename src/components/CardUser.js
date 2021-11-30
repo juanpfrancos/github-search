@@ -9,6 +9,7 @@ import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Link from '@mui/material/Link';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -62,7 +63,10 @@ export default function CardUserMe({ userData }) {
             Fecha de registro: {userData.created_at}
           </Typography>
           <Typography paragraph>
-            Dirección: {userData.html_url}
+            Dirección: 
+            <Link href={userData.html_url} underline="none">
+              {userData.html_url}
+            </Link>
           </Typography>
           <Typography paragraph>
             Último Commit: {userData.updated_at}

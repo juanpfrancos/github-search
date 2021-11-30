@@ -5,9 +5,12 @@ import CardUserMe from './CardUser'
 function Main() {
     const [username, setUsername] = useState("");
     const [userData, setUserData] = useState(Object);
-      
+    const [showUser, setShowUser] = useState(false);
+
+
     useEffect(() => {
         getUserData();
+        
     }, [username]);
   
     var gitHubUrl = `https://api.github.com/users/${username}`;
@@ -29,8 +32,8 @@ function Main() {
       
     return (
         <>
-            <SearchAppBar username={username} setUsername={setUsername}></SearchAppBar>
-            <CardUserMe  userData={userData} ></CardUserMe>
+            <SearchAppBar username={username} setUsername={setUsername} setShowUser={setShowUser}></SearchAppBar>
+            {showUser && <CardUserMe  userData={userData} ></CardUserMe>}
         </>
     );
 }

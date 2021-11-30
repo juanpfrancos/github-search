@@ -25,6 +25,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
+    maxWidth: 345,
     [theme.breakpoints.up('sm')]: {
       width: '12ch',
       '&:focus': {
@@ -34,13 +35,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchAppBar({username, setUsername}) {
+export default function SearchAppBar({username, setUsername, setShowUser}) {
 
 const onChange = (e) =>{
     setUsername(e.target.value)
+    username === "" ? setShowUser(false) : setShowUser(true)
+    
 }
   return (
-          <Search>
+          <Search style={{width:345}}>
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
